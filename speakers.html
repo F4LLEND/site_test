@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Микшерные пульты — ResonanceWorks</title>
+  <title>Акустические системы — ResonanceWorks</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
 
   <style>
+    /* ==========================================================================
+       ПЕРЕМЕННЫЕ И БАЗОВЫЕ НАСТРОЙКИ
+       ========================================================================== */
     :root {
       --bg-dark: #262827;
       --bg-hero: #111211;
@@ -57,7 +60,9 @@
       padding: 0 32px;
     }
 
-    /* ШАПКА */
+    /* ==========================================================================
+       ЕДИНАЯ ШАПКА
+       ========================================================================== */
     .header {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -138,10 +143,12 @@
       border-color: var(--accent-green);
     }
 
-    /* БЛОК ЗАГОЛОВКА КАТЕГОРИИ */
+    /* ==========================================================================
+       ЗАГОЛОВОК СТРАНИЦЫ КАТЕГОРИИ
+       ========================================================================== */
     .category-header-section {
-      padding-top: 140px;
-      padding-bottom: 40px;
+      padding-top: 130px;
+      padding-bottom: 36px;
       border-bottom: 1px solid var(--border-dark);
       background-color: var(--bg-hero);
     }
@@ -150,12 +157,12 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 1.5px;
       color: var(--text-muted);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
     .breadcrumbs a:hover { color: var(--accent-green); }
@@ -165,12 +172,12 @@
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 16px;
     }
 
     .category-page-title {
       font-family: var(--font-heading);
-      font-size: clamp(32px, 4vw, 52px);
+      font-size: clamp(28px, 3.8vw, 48px);
       line-height: 1.1;
       font-weight: 800;
       text-transform: uppercase;
@@ -180,14 +187,16 @@
     .category-page-title span { color: var(--accent-green); }
 
     .category-counter {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--text-muted);
     }
 
-    /* СЕТКА ТОВАРОВ (3 КОЛОНКИ) */
+    /* ==========================================================================
+       СЕТКА КАРТОЧЕК ТОВАРОВ (3 В РЯД)
+       ========================================================================== */
     .catalog-grid-section {
       padding: 60px 0 120px;
     }
@@ -214,12 +223,11 @@
 
     .item-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.4);
     }
 
     .item-card-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       font-size: 11px;
       font-weight: 700;
@@ -229,33 +237,26 @@
       z-index: 2;
     }
 
-    .badge-status {
-      background: rgba(0, 0, 0, 0.08);
-      padding: 4px 8px;
-      border-radius: 4px;
-      color: var(--text-dark);
-    }
-
     .item-img-wrap {
       position: relative;
       height: 200px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 16px 0;
+      margin: 14px 0;
       z-index: 2;
     }
 
     .item-img {
-      max-width: 85%;
+      max-width: 90%;
       max-height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.25));
       transition: transform 0.3s ease;
     }
 
     .item-card:hover .item-img {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     .item-info {
@@ -278,6 +279,7 @@
       font-size: 16px;
       font-weight: 800;
       text-transform: uppercase;
+      letter-spacing: -0.2px;
       margin-bottom: 8px;
       color: var(--text-dark);
     }
@@ -285,7 +287,7 @@
     .item-specs-text {
       font-size: 12px;
       color: var(--text-card-muted);
-      line-height: 1.4;
+      line-height: 1.45;
     }
 
     .item-card-actions {
@@ -296,101 +298,181 @@
       gap: 6px;
     }
 
-    .btn-buy-primary {
+    /* БОЛЬШАЯ ЗЕЛЕНАЯ КНОПКА "ВЫБРАТЬ МАРКЕТПЛЕЙС" */
+    .btn-mp-toggle {
       width: 100%;
       background: var(--accent-green);
       color: var(--text-dark);
-      padding: 12px 18px;
+      padding: 14px 20px;
       border-radius: var(--radius-btn);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 11px;
+      justify-content: space-between;
+      font-family: var(--font-body);
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: var(--transition);
+      cursor: pointer;
     }
 
-    .btn-buy-primary:hover {
-      background: #bce600;
+    .btn-mp-toggle:hover {
+      background: #bde600;
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(208, 255, 0, 0.35);
     }
 
-    .btn-mp-toggle {
-      width: 100%;
-      background: transparent;
-      padding: 8px 4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      margin-top: 2px;
-      transition: var(--transition);
+    .mp-chevron {
+      font-size: 10px;
+      transition: transform 0.3s ease;
     }
 
-    .btn-mp-toggle:hover { color: #000; }
-
-    .btn-tg-secondary {
-      width: 100%;
-      background: transparent;
-      padding: 8px 4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      transition: var(--transition);
+    .btn-mp-toggle.active .mp-chevron {
+      transform: rotate(180deg);
     }
 
-    .btn-tg-secondary svg { width: 13px; height: 13px; fill: currentColor; }
-    .btn-tg-secondary:hover { color: #000; }
-
-    /* Выпадающий список маркетплейсов */
+    /* ВЫПАДАЮЩИЙ СПИСОК МАРКЕТПЛЕЙСОВ (ОБНОВЛЕННЫЙ ОВЕРЛЕЙ) */
     .mp-dropdown {
       position: absolute;
-      left: 0; right: 0; bottom: 100%;
+      left: 0;
+      right: 0;
+      bottom: 100%;
       margin-bottom: 6px;
       max-height: 0;
       overflow: hidden;
       background: var(--bg-dropdown);
       border-radius: var(--radius-btn);
       color: var(--text-white);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 100;
     }
 
-    .mp-dropdown.open { max-height: 280px; }
-    .mp-dropdown-inner { padding: 14px 16px; }
+    .mp-dropdown.open {
+      max-height: 320px;
+    }
 
-    .mp-list { display: flex; flex-direction: column; gap: 4px; }
+    .mp-dropdown-inner {
+      padding: 16px 18px;
+    }
+
+    .mp-dropdown-header {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .mp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .mp-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: var(--text-white);
-      font-size: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 500;
-      padding: 6px 8px;
-      border-radius: 4px;
-      transition: var(--transition);
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.22s ease, 
+                  color 0.22s ease;
+      cursor: pointer;
     }
 
-    .mp-link:hover { background: rgba(255, 255, 255, 0.08); color: var(--accent-green); }
+    .mp-name-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-    /* ПОДВАЛ */
+    .mp-name-text {
+      transition: color 0.22s ease;
+    }
+
+    .mp-tag {
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--accent-green);
+      width: 26px;
+      flex-shrink: 0;
+    }
+
+    .mp-tag.pink {
+      color: var(--accent-pink);
+    }
+
+    .mp-arrow {
+      font-size: 14px;
+      color: var(--text-muted);
+      opacity: 0.7;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  color 0.22s ease, 
+                  opacity 0.22s ease;
+    }
+
+    .mp-link:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(4px);
+    }
+
+    .mp-link:hover .mp-name-text {
+      color: var(--accent-green);
+    }
+
+    .mp-link:hover .mp-arrow {
+      color: var(--accent-green);
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    /* КНОПКА ЗАКАЗАТЬ ЧЕРЕЗ TELEGRAM */
+    .btn-tg-secondary {
+      width: 100%;
+      background: transparent;
+      padding: 10px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      transition: var(--transition);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin-top: 4px;
+    }
+
+    .btn-tg-secondary svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-tg-secondary:hover {
+      color: #000;
+    }
+
+    .btn-tg-secondary:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    /* ==========================================================================
+       ЕДИНЫЙ ПОДВАЛ
+       ========================================================================== */
     .footer-custom {
       background-color: var(--bg-dark);
       color: var(--text-white);
@@ -442,7 +524,9 @@
     .footer-legal-link { color: var(--text-muted); text-decoration: underline; }
     .footer-legal-link:hover { color: var(--accent-green); }
 
-    /* АДАПТИВНОСТЬ */
+    /* ==========================================================================
+       АДАПТИВНОСТЬ
+       ========================================================================== */
     @media (max-width: 1024px) {
       .items-grid { grid-template-columns: repeat(2, 1fr); }
     }
@@ -458,6 +542,7 @@
 </head>
 <body>
 
+  <!-- ШАПКА -->
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo-wrap">
@@ -481,6 +566,7 @@
     </div>
   </header>
 
+  <!-- ЗАГОЛОВОК КАТЕГОРИИ -->
   <section class="category-header-section">
     <div class="container">
       <div class="breadcrumbs">
@@ -488,46 +574,60 @@
         <span>/</span>
         <a href="index.html#catalog">Каталог</a>
         <span>/</span>
-        <span>Микшерные пульты</span>
+        <span>Акустические системы</span>
       </div>
 
       <div class="category-title-row">
-        <h1 class="category-page-title">Микшерные <span>пульты.</span></h1>
-        <div class="category-counter">6 моделей в каталоге</div>
+        <h1 class="category-page-title">Акустические <span>системы.</span></h1>
+        <div class="category-counter">7 моделей в наличии</div>
       </div>
     </div>
   </section>
 
+  <!-- СЕТКА КАРТОЧЕК ТОВАРОВ (3 В РЯД) -->
   <section class="catalog-grid-section">
     <div class="container">
       <div class="items-grid">
 
+        <!-- ТОВАР 1: JBL EON 715 -->
         <div class="item-card">
           <div class="item-card-top">
-            <span>Арт. RW-MIX-01</span>
-            <span class="badge-status">В наличии</span>
+            <span>Арт. RW-JBL-715</span>
           </div>
           <div class="item-img-wrap">
-            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Soundcraft EFX8" class="item-img" />
+            <img src="https://psv4.userapi.com/s/v1/d2/k8popAfmQ1Vra-EBmTcG7gXYPkizF1GrjMWQUEeDb9YlfzyGN7U9z4xxvoK3y7Rfq4XnHOQAE3_S1qb_aoziesVDehViSJ0ugmeJU9_o0_T-Suc-xhYJgbND9GhvlQ29BwTfo_AQkGY6/image_10.png" alt="JBL EON 715" class="item-img" />
           </div>
           <div class="item-info">
-            <div class="item-brand">SOUNDCRAFT</div>
-            <h3 class="item-name">Soundcraft EFX8</h3>
-            <p class="item-specs-text">8 моно + 2 стерео, встроенный 24-битный процессор эффектов Lexicon, преампы GB30.</p>
+            <div class="item-brand">JBL PROFESSIONAL</div>
+            <h3 class="item-name">JBL EON 715</h3>
+            <p class="item-specs-text">15-дюймовая двухполосная активная колонка, 1300 Вт Peak, DSP процессор dbx DriveRack с AFS и эквалайзером, Bluetooth 5.0.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-1', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-1">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -539,32 +639,45 @@
           </div>
         </div>
 
+        <!-- ТОВАР 2: JBL PRX 915 -->
         <div class="item-card">
           <div class="item-card-top">
-            <span>Арт. RW-MIX-02</span>
-            <span class="badge-status">В наличии</span>
+            <span>Арт. RW-JBL-915</span>
           </div>
           <div class="item-img-wrap">
-            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Yamaha MG10XU" class="item-img" />
+            <img src="https://i.imgur.com/YDqubCe.png" alt="JBL PRX 915" class="item-img" />
           </div>
           <div class="item-info">
-            <div class="item-brand">YAMAHA</div>
-            <h3 class="item-name">Yamaha MG10XU</h3>
-            <p class="item-specs-text">10 каналов, USB-аудиоинтерфейс 24-бит/192кГц, компрессоры 1-knob, процессор SPX.</p>
+            <div class="item-brand">JBL PROFESSIONAL</div>
+            <h3 class="item-name">JBL PRX 915</h3>
+            <p class="item-specs-text">Концертный активный громкоговоритель 2000 Вт Peak, компрессионный драйвер 2408H-2 1.5", продвинутый DSP, цветной дисплей.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-2', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-2">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -576,32 +689,245 @@
           </div>
         </div>
 
+        <!-- ТОВАР 3: RCF ART 715-A MK4 -->
         <div class="item-card">
           <div class="item-card-top">
-            <span>Арт. RW-MIX-03</span>
-            <span class="badge-status">В наличии</span>
+            <span>Арт. RW-RCF-715</span>
           </div>
           <div class="item-img-wrap">
-            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Dynacord CMS 600-3" class="item-img" />
+            <img src="https://i.imgur.com/4qt5bSF.png" alt="RCF ART 715-A" class="item-img" />
           </div>
           <div class="item-info">
-            <div class="item-brand">DYNACORD</div>
-            <h3 class="item-name">CMS 600-3 Compact</h3>
-            <p class="item-specs-text">6 mono + 2 stereo, два независимых процессора эффектов, USB-интерфейс 4x4.</p>
+            <div class="item-brand">RCF</div>
+            <h3 class="item-name">ART 715-A MK4</h3>
+            <p class="item-specs-text">Активная двухполосная система, 1400 Вт Peak, 15" НЧ вуфер, 1" титановый компрессионный драйвер, цифровая обработка FiRPHASE.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-3', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-3">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ТОВАР 4: RCF ART 915-A -->
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-RCF-915</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://i.imgur.com/I0rv2dZ.png" alt="RCF ART 915-A" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">RCF</div>
+            <h3 class="item-name">ART 915-A</h3>
+            <p class="item-specs-text">Флагманская модель 2100 Вт Peak, компрессионный драйвер 1.75", рупор True Resistive Waveguide, контроль хода диффузора BMC.</p>
+          </div>
+          <div class="item-card-actions">
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-4', this)">
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-4">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ТОВАР 5: RCF ART 745-A MK4 -->
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-RCF-745</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://i.imgur.com/oM6BXwd.png" alt="RCF ART 745-A" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">RCF</div>
+            <h3 class="item-name">ART 745-A MK4</h3>
+            <p class="item-specs-text">Концертный флагман, 1400 Вт Peak, 15" неодимовый вуфер, уникальный 4.0" титановый ВЧ драйвер, беспрецедентная детализация вокала.</p>
+          </div>
+          <div class="item-card-actions">
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-5', this)">
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-5">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ТОВАР 6: Behringer Eurolive B115D -->
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-BEH-115</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://behringer-russia.ru/wa-data/public/shop/products/18/00/18/images/64/64.500x0.png" alt="Behringer Eurolive B115D" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">BEHRINGER</div>
+            <h3 class="item-name">Eurolive B115D</h3>
+            <p class="item-specs-text">Активная 1000-ваттная 2-полосная акустическая система, 15" длинноходный НЧ динамик, встроенный 2-канальный микшер, порт Wireless Ready.</p>
+          </div>
+          <div class="item-card-actions">
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-6', this)">
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-6">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- ТОВАР 7: Behringer Eurolive B215D -->
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-BEH-215</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://i.imgur.com/KxZ5Kyw.png" alt="Behringer Eurolive B215D" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">BEHRINGER</div>
+            <h3 class="item-name">Eurolive B215D</h3>
+            <p class="item-specs-text">Активная концертная колонка 550 Вт Class-D, 15-дюймовый НЧ вуфер, компрессионный 1.35" драйвер с алюминиевой диафрагмой, оптический лимитер.</p>
+          </div>
+          <div class="item-card-actions">
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-7', this)">
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-7">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести колонки</div>
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -617,6 +943,7 @@
     </div>
   </section>
 
+  <!-- ЕДИНЫЙ ПОДВАЛ -->
   <footer class="footer-custom" id="marketplaces">
     <div class="container footer-custom-container">
       <div class="footer-top-block">
@@ -666,17 +993,25 @@
     </div>
   </footer>
 
+  <!-- СКРИПТ УПРАВЛЕНИЯ ВЫПАДАЮЩИМИ СПИСКАМИ -->
   <script>
     function toggleMp(id, btn) {
       const dropdown = document.getElementById(id);
       const isOpen = dropdown.classList.contains('open');
+
       document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
-      if (!isOpen) dropdown.classList.add('open');
+      document.querySelectorAll('.btn-mp-toggle').forEach(b => b.classList.remove('active'));
+
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        btn.classList.add('active');
+      }
     }
 
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.item-card-actions')) {
         document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.btn-mp-toggle').forEach(btn => btn.classList.remove('active'));
       }
     });
   </script>
