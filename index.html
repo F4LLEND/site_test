@@ -506,7 +506,7 @@
     }
 
     /* ==========================================================================
-       СЕКЦИЯ КАТАЛОГА: 6 КАТЕГОРИЙ (2 РЯДА ПО 3 КАРТОЧКИ)
+       СЕКЦИЯ КАТАЛОГА: 6 КАТЕГОРИЙ
        ========================================================================== */
     .catalog-section {
       padding: 120px 0 100px;
@@ -696,7 +696,6 @@
       gap: 6px;
     }
 
-    /* Большая кнопка "ПОДРОБНЕЕ" */
     .btn-details {
       width: 100%;
       background: var(--accent-green);
@@ -738,7 +737,6 @@
       transform: translateX(4px);
     }
 
-    /* Кнопка "ВЫБРАТЬ МАРКЕТПЛЕЙС" */
     .btn-mp-toggle {
       width: 100%;
       background: transparent;
@@ -770,7 +768,6 @@
       transform: rotate(180deg);
     }
 
-    /* Кнопка "КУПИТЬ В TELEGRAM" */
     .btn-tg-secondary {
       width: 100%;
       background: transparent;
@@ -803,7 +800,6 @@
       transform: translate(2px, -2px);
     }
 
-    /* Выпадающий список маркетплейсов */
     .mp-dropdown {
       position: absolute;
       left: 0;
@@ -1169,6 +1165,7 @@
     </div>
   </header>
 
+  <!-- ГЛАВНЫЙ ЭКРАН / HERO КАРОСЕЛЬ -->
   <section class="hero-carousel">
     <div class="hero-bg-grid"></div>
 
@@ -1186,6 +1183,7 @@
 
       <div class="hero-slides-wrapper" id="hero-slider-box">
         
+        <!-- СЛАЙД 01 -->
         <div class="hero-slide active" data-index="1" data-tag="Профессиональный ЗВУК / 2026" data-line="green">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -1215,6 +1213,7 @@
           </div>
         </div>
 
+        <!-- СЛАЙД 02 -->
         <div class="hero-slide" data-index="2" data-tag="СТУДИЙНЫЙ МОНИТОРИНГ / 2026" data-line="pink">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -1244,6 +1243,7 @@
           </div>
         </div>
 
+        <!-- СЛАЙД 03 -->
         <div class="hero-slide" data-index="3" data-tag="Профессиональные микрофоны / 2026" data-line="green">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -1269,10 +1269,11 @@
               <div class="hero-ring hero-ring-2"></div>
               <div class="hero-ring hero-ring-3"></div>
             </div>
-            <img src="https://products.shureweb.eu/cdn-cgi/image/width=1380,height=1380,format=auto/shure_product_db/product_main_images/files/49b/521/6f-/original/f1397530e7413a52ed7d4bf161804430.webp" alt="Microphones Pro" class="hero-device-img" style="max-width: 500px; max-height: 520px; transform: scale(1.35);" />
+            <img src="https://products.shureweb.eu/cdn-cgi/image/width=1380,height=1380,format=auto/shure_product_db/product_main_images/files/49b/521/6f-/original/f1397530e7413a52ed7d4bf161804430.webp" alt="Home Master" class="hero-device-img" style="max-width: 500px; max-height: 520px; transform: scale(1.35);" />
           </div>
         </div>
 
+        <!-- СЛАЙД 04 -->
         <div class="hero-slide" data-index="4" data-tag="акустические провода / 2026" data-line="pink">
           <div class="hero-content">
             <h1 class="hero-title">
@@ -1317,6 +1318,9 @@
     </div>
   </section>
 
+  <!-- ==========================================================================
+       СЕКЦИЯ КАТАЛОГА: 6 КАТЕГОРИЙ
+       ========================================================================== -->
   <section class="catalog-section" id="catalog">
     <div class="container">
       
@@ -1338,6 +1342,7 @@
 
       <div class="products-grid">
         
+        <!-- КАТЕГОРИЯ 01: МИКШЕРНЫЕ ПУЛЬТЫ -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1360,7 +1365,7 @@
           </div>
 
           <div class="card-actions">
-            <a href="#details" class="btn-details">
+            <a href="mixers.html" class="btn-details">
               <span>Подробнее</span>
               <span class="details-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1408,6 +1413,7 @@
           </div>
         </div>
 
+        <!-- КАТЕГОРИЯ 02: МИКРОФОНЫ -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1478,6 +1484,7 @@
           </div>
         </div>
 
+        <!-- КАТЕГОРИЯ 03: АКУСТИЧЕСКИЕ СИСТЕМЫ (ВЕДЕТ НА SPEAKERS.HTML) -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1500,7 +1507,8 @@
           </div>
 
           <div class="card-actions">
-            <a href="#details" class="btn-details">
+            <!-- КНОПКА ВЕДЕТ НА SPEAKERS.HTML -->
+            <a href="speakers.html" class="btn-details">
               <span>Подробнее</span>
               <span class="details-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -1548,6 +1556,7 @@
           </div>
         </div>
 
+        <!-- КАТЕГОРИЯ 04: УСИЛИТЕЛИ МОЩНОСТИ -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1561,7 +1570,7 @@
           </div>
 
           <div class="card-image-wrap">
-            <img src="https://adn.harmanpro.com/product_attachments/product_attachments/2147_1728943142/XLi1500_Front_Shadow--straight_on_x_large_2x.webp" alt="Усилители мощности" class="card-img" />
+            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&auto=format&fit=crop&q=80" alt="Усилители мощности" class="card-img" />
           </div>
 
           <div class="card-meta">
@@ -1618,6 +1627,7 @@
           </div>
         </div>
 
+        <!-- КАТЕГОРИЯ 05: АКСЕССУАРЫ -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1631,7 +1641,7 @@
           </div>
 
           <div class="card-image-wrap">
-            <img src="https://products.shureweb.eu/cdn-cgi/image/width=1380,height=1380,format=auto/shure_product_db/product_main_images/files/af2/abb/58-/original/01c09329667354745025f27b55dce56e.webp" alt="Аксессуары" class="card-img" />
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=500&auto=format&fit=crop&q=80" alt="Аксессуары" class="card-img" />
           </div>
 
           <div class="card-meta">
@@ -1688,6 +1698,7 @@
           </div>
         </div>
 
+        <!-- КАТЕГОРИЯ 06: ПЕРЕХОДНИКИ И КАБЕЛИ -->
         <div class="product-card">
           <div class="acoustic-waves">
             <div class="wave-circle wave-1"></div>
@@ -1701,7 +1712,7 @@
           </div>
 
           <div class="card-image-wrap">
-            <img src="https://www.fender.com/cdn-cgi/image/format=auto,resize=height=auto,width=850/https://www.fmicassets.com/Damroot/eCommPNG/10001/0990820060_merch_frt_002_nr.png" alt="Переходники и кабели" class="card-img" />
+            <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=500&auto=format&fit=crop&q=80" alt="Переходники и кабели" class="card-img" />
           </div>
 
           <div class="card-meta">
@@ -1763,6 +1774,7 @@
     </div>
   </section>
 
+  <!-- СЕКЦИЯ УСЛУГ -->
   <section class="services-section" id="services">
     <div class="container">
       <div class="section-eyebrow">Сервис и поддержка</div>
@@ -1790,6 +1802,7 @@
     </div>
   </section>
 
+  <!-- ПОДВАЛ -->
   <footer class="footer-custom" id="marketplaces">
     <div class="container footer-custom-container">
       
@@ -1824,23 +1837,19 @@
 
       <div class="footer-bottom-block">
         <div>ResonanceWorks 2026 © Все права защищены</div>
-
         <div class="footer-socials">
           <a href="https://t.me/" target="_blank" class="footer-social-btn" title="Telegram">
             <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
           </a>
-
           <a href="https://vk.com/" target="_blank" class="footer-social-btn" title="VK">
             <svg viewBox="0 0 24 24"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.38 13.91h-1.61c-.61 0-.8-.49-1.9-1.59-.96-.93-1.38-1.05-1.62-1.05-.33 0-.43.1-.43.57v1.49c0 .39-.12.58-1.17.58-1.74 0-3.66-1.06-5.02-3.03-2.06-2.92-2.63-5.11-2.63-5.56 0-.25.1-.48.58-.48h1.61c.43 0 .6.2.77.67.84 2.45 2.25 4.6 2.83 4.6.22 0 .32-.1.32-.65v-2.53c-.07-1.16-.68-1.26-.68-1.67 0-.2.17-.39.43-.39h2.52c.35 0 .48.18.48.6v3.42c0 .37.16.5.27.5.22 0 .4-.13.82-.55 1.28-1.44 2.19-3.65 2.19-3.65.12-.25.32-.47.76-.47h1.61c.48 0 .59.25.48.6-.26.96-2.22 3.8-2.22 3.8-.19.31-.27.45 0 .81.19.26.83.81 1.26 1.31 1.01 1.15 1.59 2.09 1.77 2.76.19.67-.1.99-.77.99z"/></svg>
           </a>
         </div>
-
         <div class="footer-legal-links">
           <a href="#" class="footer-legal-link">Политика конфиденциальности</a>
           <a href="#" class="footer-legal-link">Согласие на обработку ПД</a>
         </div>
       </div>
-
     </div>
   </footer>
 
