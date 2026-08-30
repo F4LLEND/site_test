@@ -217,7 +217,7 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 24px;
-      min-height: 530px;
+      min-height: 520px;
       transition: var(--transition);
     }
 
@@ -228,7 +228,6 @@
 
     .item-card-top {
       display: flex;
-      justify-content: space-between;
       align-items: center;
       font-size: 11px;
       font-weight: 700;
@@ -236,18 +235,6 @@
       text-transform: uppercase;
       color: var(--text-card-muted);
       z-index: 2;
-    }
-
-    .badge-status {
-      background: rgba(0, 0, 0, 0.08);
-      padding: 4px 8px;
-      border-radius: 4px;
-      color: var(--text-dark);
-    }
-
-    .badge-status.pro {
-      background: var(--text-dark);
-      color: var(--accent-green);
     }
 
     .item-img-wrap {
@@ -311,99 +298,177 @@
       gap: 6px;
     }
 
-    .btn-buy-primary {
+    /* БОЛЬШАЯ ЗЕЛЕНАЯ КНОПКА "ВЫБРАТЬ МАРКЕТПЛЕЙС" */
+    .btn-mp-toggle {
       width: 100%;
       background: var(--accent-green);
       color: var(--text-dark);
-      padding: 12px 18px;
+      padding: 14px 20px;
       border-radius: var(--radius-btn);
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 8px;
-      font-size: 11px;
+      justify-content: space-between;
+      font-family: var(--font-body);
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       transition: var(--transition);
+      cursor: pointer;
     }
 
-    .btn-buy-primary:hover {
-      background: #bce600;
+    .btn-mp-toggle:hover {
+      background: #bde600;
       transform: translateY(-2px);
       box-shadow: 0 4px 15px rgba(208, 255, 0, 0.35);
     }
 
-    .btn-mp-toggle {
-      width: 100%;
-      background: transparent;
-      padding: 8px 4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      margin-top: 2px;
-      transition: var(--transition);
+    .mp-chevron {
+      font-size: 10px;
+      transition: transform 0.3s ease;
     }
 
-    .btn-mp-toggle:hover { color: #000; }
-
-    .btn-tg-secondary {
-      width: 100%;
-      background: transparent;
-      padding: 8px 4px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      color: var(--text-dark);
-      border-top: 1px solid rgba(0, 0, 0, 0.08);
-      transition: var(--transition);
+    .btn-mp-toggle.active .mp-chevron {
+      transform: rotate(180deg);
     }
 
-    .btn-tg-secondary svg { width: 13px; height: 13px; fill: currentColor; }
-    .btn-tg-secondary:hover { color: #000; }
-
-    /* Выпадающий список маркетплейсов */
+    /* ВЫПАДАЮЩИЙ СПИСОК МАРКЕТПЛЕЙСОВ (КАК НА ГЛАВНОЙ) */
     .mp-dropdown {
       position: absolute;
-      left: 0; right: 0; bottom: 100%;
+      left: 0;
+      right: 0;
+      bottom: 100%;
       margin-bottom: 6px;
       max-height: 0;
       overflow: hidden;
       background: var(--bg-dropdown);
       border-radius: var(--radius-btn);
       color: var(--text-white);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       z-index: 100;
     }
 
-    .mp-dropdown.open { max-height: 280px; }
-    .mp-dropdown-inner { padding: 14px 16px; }
+    .mp-dropdown.open {
+      max-height: 320px;
+    }
 
-    .mp-list { display: flex; flex-direction: column; gap: 4px; }
+    .mp-dropdown-inner {
+      padding: 16px 18px;
+    }
+
+    .mp-dropdown-header {
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .mp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
     .mp-link {
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: var(--text-white);
-      font-size: 12px;
+      font-family: var(--font-body);
+      font-size: 13px;
       font-weight: 500;
-      padding: 6px 8px;
-      border-radius: 4px;
-      transition: var(--transition);
+      padding: 8px 10px;
+      border-radius: 6px;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  background-color 0.22s ease, 
+                  color 0.22s ease;
+      cursor: pointer;
     }
 
-    .mp-link:hover { background: rgba(255, 255, 255, 0.08); color: var(--accent-green); }
+    .mp-name-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mp-name-text {
+      transition: color 0.22s ease;
+    }
+
+    .mp-tag {
+      font-family: var(--font-heading);
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--accent-green);
+      width: 26px;
+      flex-shrink: 0;
+    }
+
+    .mp-tag.pink {
+      color: var(--accent-pink);
+    }
+
+    .mp-arrow {
+      font-size: 14px;
+      color: var(--text-muted);
+      opacity: 0.7;
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), 
+                  color 0.22s ease, 
+                  opacity 0.22s ease;
+    }
+
+    .mp-link:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateX(4px);
+    }
+
+    .mp-link:hover .mp-name-text {
+      color: var(--accent-green);
+    }
+
+    .mp-link:hover .mp-arrow {
+      color: var(--accent-green);
+      opacity: 1;
+      transform: translate(2px, -2px);
+    }
+
+    /* КНОПКА ЗАКАЗАТЬ ЧЕРЕЗ TELEGRAM */
+    .btn-tg-secondary {
+      width: 100%;
+      background: transparent;
+      padding: 10px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      transition: var(--transition);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin-top: 4px;
+    }
+
+    .btn-tg-secondary svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-tg-secondary:hover {
+      color: #000;
+    }
+
+    .btn-tg-secondary:hover svg {
+      transform: translate(2px, -2px);
+    }
 
     /* ==========================================================================
        ЕДИНЫЙ ПОДВАЛ
@@ -477,6 +542,7 @@
 </head>
 <body>
 
+  <!-- ШАПКА -->
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="brand-logo-wrap">
@@ -500,6 +566,7 @@
     </div>
   </header>
 
+  <!-- ЗАГОЛОВОК КАТЕГОРИИ -->
   <section class="category-header-section">
     <div class="container">
       <div class="breadcrumbs">
@@ -517,14 +584,15 @@
     </div>
   </section>
 
+  <!-- СЕТКА КАРТОЧЕК ТОВАРОВ (3 В РЯД) -->
   <section class="catalog-grid-section">
     <div class="container">
       <div class="items-grid">
 
+        <!-- ТОВАР 1: Yamaha MG06X -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-MG06X</span>
-            <span class="badge-status">В наличии</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Yamaha MG06X" class="item-img" />
@@ -535,18 +603,31 @@
             <p class="item-specs-text">6 каналов (2 моно D-PRE + 2 стерео), встроенный процессор эффектов SPX (6 программ), металлический корпус.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-1', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-1">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -558,10 +639,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 2: Yamaha MG16XU -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-MG16XU</span>
-            <span class="badge-status pro">PRO</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Yamaha MG16XU" class="item-img" />
@@ -572,18 +653,31 @@
             <p class="item-specs-text">16 каналов (8 моно + 4 стерео), 4 AUX, 4 GROUP шины, компрессоры, 24 SPX эффекта, USB аудиоинтерфейс 24-бит/192кГц.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-2', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-2">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -595,10 +689,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 3: Behringer XENYX X1204USB -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-X1204</span>
-            <span class="badge-status">В наличии</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Behringer XENYX X1204" class="item-img" />
@@ -609,18 +703,31 @@
             <p class="item-specs-text">12 входов (4 микрофонных с преампами XENYX и компрессорами), 24-битный процессор Klark Teknik, USB интерфейс.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-3', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-3">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -632,10 +739,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 4: Dynacord PowerMate 1000-3 -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-PM1000</span>
-            <span class="badge-status pro">POWERED PRO</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Dynacord PowerMate 1000-3" class="item-img" />
@@ -646,18 +753,31 @@
             <p class="item-specs-text">Активный микшер 2 x 1000 Вт (4 Ом), 10 каналов (6 моно + 4 стерео), 2 FX-процессора, 11-полосный эквалайзер, USB 4x4.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-4', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-4">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -669,10 +789,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 5: Dynacord CMS 1000-3 -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-CMS1000</span>
-            <span class="badge-status pro">PRO</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Dynacord CMS 1000-3" class="item-img" />
@@ -683,18 +803,31 @@
             <p class="item-specs-text">Концертный микшер, 10 каналов (6 моно + 4 стерео), 2 независимых цифровых процессора эффектов (100 пресетов), USB 4x4.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-5', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-5">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -706,10 +839,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 6: Dynacord CMS 600-3 -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-CMS600</span>
-            <span class="badge-status">В наличии</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Dynacord CMS 600-3" class="item-img" />
@@ -720,18 +853,31 @@
             <p class="item-specs-text">6 mono + 2 stereo, два независимых процессора эффектов, 9-полосный мастер-эквалайзер, USB-интерфейс 4x4.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-6', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-6">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -743,10 +889,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 7: Soundcraft EFX8 -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-EFX8</span>
-            <span class="badge-status">В наличии</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Soundcraft EFX8" class="item-img" />
@@ -757,18 +903,31 @@
             <p class="item-specs-text">8 моно + 2 стерео, встроенный 24-битный процессор эффектов Lexicon Audio, фирменные микрофонные преампы GB30.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-7', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-7">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -780,10 +939,10 @@
           </div>
         </div>
 
+        <!-- ТОВАР 8: Yamaha MG10XU -->
         <div class="item-card">
           <div class="item-card-top">
             <span>Арт. RW-MG10XU</span>
-            <span class="badge-status">В наличии</span>
           </div>
           <div class="item-img-wrap">
             <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Yamaha MG10XU" class="item-img" />
@@ -794,18 +953,31 @@
             <p class="item-specs-text">10 каналов (4 моно + 3 стерео), USB-аудиоинтерфейс 24-бит/192кГц, аналоговые компрессоры 1-knob, процессор SPX.</p>
           </div>
           <div class="item-card-actions">
-            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
             <div style="position: relative;">
               <button class="btn-mp-toggle" onclick="toggleMp('item-dp-8', this)">
-                <span>Выбрать площадку</span>
-                <span>▼</span>
+                <span>Выбрать маркетплейс</span>
+                <span class="mp-chevron">▼</span>
               </button>
               <div class="mp-dropdown" id="item-dp-8">
                 <div class="mp-dropdown-inner">
+                  <div class="mp-dropdown-header">Где приобрести товар</div>
                   <div class="mp-list">
-                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
-                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
-                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                    <a href="https://ozon.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">OZ</span> <span class="mp-name-text">Ozon</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">WB</span> <span class="mp-name-text">Wildberries</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag">ЯМ</span> <span class="mp-name-text">Яндекс Маркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
+                    <a href="https://megamarket.ru" target="_blank" class="mp-link">
+                      <div class="mp-name-box"><span class="mp-tag pink">ММ</span> <span class="mp-name-text">Мегамаркет</span></div>
+                      <span class="mp-arrow">↗</span>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -821,6 +993,7 @@
     </div>
   </section>
 
+  <!-- ЕДИНЫЙ ПОДВАЛ -->
   <footer class="footer-custom" id="marketplaces">
     <div class="container footer-custom-container">
       <div class="footer-top-block">
@@ -870,17 +1043,25 @@
     </div>
   </footer>
 
+  <!-- СКРИПТ УПРАВЛЕНИЯ ВЫПАДАЮЩИМИ СПИСКАМИ -->
   <script>
     function toggleMp(id, btn) {
       const dropdown = document.getElementById(id);
       const isOpen = dropdown.classList.contains('open');
+
       document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
-      if (!isOpen) dropdown.classList.add('open');
+      document.querySelectorAll('.btn-mp-toggle').forEach(b => b.classList.remove('active'));
+
+      if (!isOpen) {
+        dropdown.classList.add('open');
+        btn.classList.add('active');
+      }
     }
 
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.item-card-actions')) {
         document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
+        document.querySelectorAll('.btn-mp-toggle').forEach(b => b.classList.remove('active'));
       }
     });
   </script>
