@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Микшерные пульты — ResonanceWorks</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Unbounded:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #262827;
+      --bg-hero: #111211;
+      --bg-card: #D9D9D9;
+      --bg-dropdown: #181918;
+      
+      --accent-green: #D0FF00;
+      --accent-pink: #FF8FE9;
+      
+      --text-white: #f5f5f5;
+      --text-dark: #181918;
+      --text-muted: #888b8a;
+      --text-card-muted: #5e605f;
+      
+      --border-dark: rgba(255, 255, 255, 0.1);
+      --border-light: rgba(0, 0, 0, 0.08);
+      
+      --radius-card: 12px;
+      --radius-btn: 6px;
+      
+      --font-heading: 'Druk Wide Cyr', 'Unbounded', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { font-family: inherit; border: none; background: none; cursor: pointer; }
+
+    .container {
+      width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ШАПКА */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 80px;
+      background: rgba(17, 18, 17, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-dark);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-logo-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-white);
+      transition: var(--transition);
+    }
+
+    .rw-icon { width: 46px; height: 46px; flex-shrink: 0; }
+
+    .brand-name {
+      font-family: var(--font-heading);
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent-green);
+    }
+
+    .nav-links { display: flex; gap: 36px; }
+
+    .nav-link {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--accent-green); }
+
+    .header-action-btn {
+      padding: 12px 24px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-dark);
+      border-radius: var(--radius-btn);
+      color: var(--text-white);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .header-action-btn:hover {
+      background: var(--accent-green);
+      color: var(--text-dark);
+      border-color: var(--accent-green);
+    }
+
+    /* БЛОК ЗАГОЛОВКА КАТЕГОРИИ */
+    .category-header-section {
+      padding-top: 140px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid var(--border-dark);
+      background-color: var(--bg-hero);
+    }
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .breadcrumbs a:hover { color: var(--accent-green); }
+
+    .category-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .category-page-title {
+      font-family: var(--font-heading);
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1.1;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -1px;
+    }
+
+    .category-page-title span { color: var(--accent-green); }
+
+    .category-counter {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* СЕТКА ТОВАРОВ (3 КОЛОНКИ) */
+    .catalog-grid-section {
+      padding: 60px 0 120px;
+    }
+
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .item-card {
+      background: var(--bg-card);
+      color: var(--text-dark);
+      border-radius: var(--radius-card);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px;
+      min-height: 520px;
+      transition: var(--transition);
+    }
+
+    .item-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .item-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-card-muted);
+      z-index: 2;
+    }
+
+    .badge-status {
+      background: rgba(0, 0, 0, 0.08);
+      padding: 4px 8px;
+      border-radius: 4px;
+      color: var(--text-dark);
+    }
+
+    .item-img-wrap {
+      position: relative;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 16px 0;
+      z-index: 2;
+    }
+
+    .item-img {
+      max-width: 85%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.22));
+      transition: transform 0.3s ease;
+    }
+
+    .item-card:hover .item-img {
+      transform: scale(1.06);
+    }
+
+    .item-info {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 16px;
+    }
+
+    .item-brand {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text-card-muted);
+      margin-bottom: 4px;
+    }
+
+    .item-name {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: var(--text-dark);
+    }
+
+    .item-specs-text {
+      font-size: 12px;
+      color: var(--text-card-muted);
+      line-height: 1.4;
+    }
+
+    .item-card-actions {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .btn-buy-primary {
+      width: 100%;
+      background: var(--accent-green);
+      color: var(--text-dark);
+      padding: 12px 18px;
+      border-radius: var(--radius-btn);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .btn-buy-primary:hover {
+      background: #bce600;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(208, 255, 0, 0.35);
+    }
+
+    .btn-mp-toggle {
+      width: 100%;
+      background: transparent;
+      padding: 8px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      margin-top: 2px;
+      transition: var(--transition);
+    }
+
+    .btn-mp-toggle:hover { color: #000; }
+
+    .btn-tg-secondary {
+      width: 100%;
+      background: transparent;
+      padding: 8px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      transition: var(--transition);
+    }
+
+    .btn-tg-secondary svg { width: 13px; height: 13px; fill: currentColor; }
+    .btn-tg-secondary:hover { color: #000; }
+
+    /* Выпадающий список маркетплейсов */
+    .mp-dropdown {
+      position: absolute;
+      left: 0; right: 0; bottom: 100%;
+      margin-bottom: 6px;
+      max-height: 0;
+      overflow: hidden;
+      background: var(--bg-dropdown);
+      border-radius: var(--radius-btn);
+      color: var(--text-white);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+
+    .mp-dropdown.open { max-height: 280px; }
+    .mp-dropdown-inner { padding: 14px 16px; }
+
+    .mp-list { display: flex; flex-direction: column; gap: 4px; }
+    .mp-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text-white);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 8px;
+      border-radius: 4px;
+      transition: var(--transition);
+    }
+
+    .mp-link:hover { background: rgba(255, 255, 255, 0.08); color: var(--accent-green); }
+
+    /* ПОДВАЛ */
+    .footer-custom {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      padding: 50px 0 32px;
+      border-top: 1px solid var(--border-dark);
+    }
+
+    .footer-custom-container { display: flex; flex-direction: column; gap: 24px; }
+    .footer-top-block { display: flex; flex-direction: column; gap: 14px; }
+    .footer-contacts-list { display: flex; flex-direction: column; gap: 10px; font-size: 14px; font-weight: 600; }
+    .footer-contact-item { display: flex; align-items: center; gap: 10px; }
+    .footer-contact-item a:hover { color: var(--accent-green); }
+
+    .footer-contact-icon {
+      width: 22px; height: 22px;
+      background: var(--accent-green);
+      color: var(--text-dark);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .footer-contact-icon svg { width: 12px; height: 12px; fill: currentColor; }
+    .footer-divider-line { width: 100%; height: 1px; background: var(--border-dark); margin: 8px 0; }
+
+    .footer-bottom-block {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .footer-socials { display: flex; align-items: center; gap: 12px; }
+    .footer-social-btn {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      color: var(--text-dark);
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+    }
+
+    .footer-social-btn svg { width: 16px; height: 16px; fill: currentColor; }
+    .footer-social-btn:hover { transform: scale(1.12); background: #bce600; }
+
+    .footer-legal-links { display: flex; gap: 28px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: underline; }
+    .footer-legal-link:hover { color: var(--accent-green); }
+
+    /* АДАПТИВНОСТЬ */
+    @media (max-width: 1024px) {
+      .items-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .items-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .category-title-row { flex-direction: column; align-items: flex-start; }
+      .footer-bottom-block, .footer-legal-links { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo-wrap">
+        <svg class="rw-icon" viewBox="0 0 320 320" fill="currentColor">
+          <path d="M141.238 164H105.358L89.7583 138.2H58.1983V164H27.2383V78.32H104.518C116.838 78.32 125.678 80.68 131.038 85.4C136.398 90.12 139.078 97.32 139.078 107C139.078 114.36 137.478 119.92 134.278 123.68C131.078 127.44 126.518 130 120.598 131.36V132.44L141.238 164ZM95.2783 117.68C98.5583 117.68 100.958 117.04 102.478 115.76C103.998 114.4 104.758 112.32 104.758 109.52C104.758 106.72 103.998 104.68 102.478 103.4C100.958 102.04 98.5583 101.36 95.2783 101.36H58.1983V117.68H95.2783Z"/>
+          <path d="M234.342 250L220.422 198.04H219.582L205.782 250H167.862L141.822 164.32H175.182L188.742 217H189.582L203.502 164.32H236.622L250.542 217H251.382L265.062 164.32H298.182L271.662 250H234.342Z"/>
+          <path d="M293.513 277.5C296.913 277.5 300.046 278.333 302.913 280C305.813 281.633 308.096 283.867 309.763 286.7C311.463 289.5 312.313 292.567 312.313 295.9C312.313 299.2 311.463 302.267 309.763 305.1C308.096 307.9 305.813 310.133 302.913 311.8C300.046 313.433 296.913 314.25 293.513 314.25C290.113 314.25 286.963 313.433 284.063 311.8C281.196 310.133 278.913 307.9 277.213 305.1C275.546 302.267 274.713 299.2 274.713 295.9C274.713 292.567 275.546 289.5 277.213 286.7C278.913 283.867 281.196 281.633 284.063 280C286.963 278.333 290.113 277.5 293.513 277.5ZM293.513 310.85C296.28 310.85 298.83 310.183 301.163 308.85C303.496 307.483 305.346 305.667 306.713 303.4C308.113 301.1 308.813 298.6 308.813 295.9C308.813 293.2 308.113 290.7 306.713 288.4C305.346 286.1 303.496 284.283 301.163 282.95C298.83 281.583 296.28 280.9 293.513 280.9C290.746 280.9 288.18 281.583 285.813 282.95C283.48 284.283 281.613 286.1 280.213 288.4C278.846 290.7 278.163 293.2 278.163 295.9C278.163 298.6 278.846 301.1 280.213 303.4C281.613 305.667 283.48 307.483 285.813 308.85C288.18 310.183 290.746 310.85 293.513 310.85ZM302.363 292.5C302.363 295.5 301.046 297.45 298.413 298.35L302.963 305.6H297.213L293.263 298.9H289.913V305.6H284.913V286.1H295.013C297.346 286.1 299.146 286.667 300.413 287.8C301.713 288.933 302.363 290.5 302.363 292.5ZM289.913 295.15H294.063C295.096 295.15 295.88 294.917 296.413 294.45C296.98 293.983 297.263 293.333 297.263 292.5C297.263 291.667 296.98 291.017 296.413 290.55C295.88 290.083 295.096 289.85 294.063 289.85H289.913V295.15Z"/>
+        </svg>
+        <span class="brand-name">ResonanceWorks <span class="brand-dot"></span></span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="index.html#catalog" class="nav-link active">Каталог</a>
+        <a href="index.html#services" class="nav-link">Услуги</a>
+        <a href="index.html#marketplaces" class="nav-link">Маркетплейсы</a>
+      </nav>
+
+      <a href="https://t.me/" target="_blank" class="header-action-btn">
+        Связаться с нами ↗
+      </a>
+    </div>
+  </header>
+
+  <section class="category-header-section">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span>/</span>
+        <a href="index.html#catalog">Каталог</a>
+        <span>/</span>
+        <span>Микшерные пульты</span>
+      </div>
+
+      <div class="category-title-row">
+        <h1 class="category-page-title">Микшерные <span>пульты.</span></h1>
+        <div class="category-counter">6 моделей в каталоге</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-grid-section">
+    <div class="container">
+      <div class="items-grid">
+
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-MIX-01</span>
+            <span class="badge-status">В наличии</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Soundcraft EFX8" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">SOUNDCRAFT</div>
+            <h3 class="item-name">Soundcraft EFX8</h3>
+            <p class="item-specs-text">8 моно + 2 стерео, встроенный 24-битный процессор эффектов Lexicon, преампы GB30.</p>
+          </div>
+          <div class="item-card-actions">
+            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-1', this)">
+                <span>Выбрать площадку</span>
+                <span>▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-1">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-MIX-02</span>
+            <span class="badge-status">В наличии</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Yamaha MG10XU" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">YAMAHA</div>
+            <h3 class="item-name">Yamaha MG10XU</h3>
+            <p class="item-specs-text">10 каналов, USB-аудиоинтерфейс 24-бит/192кГц, компрессоры 1-knob, процессор SPX.</p>
+          </div>
+          <div class="item-card-actions">
+            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-2', this)">
+                <span>Выбрать площадку</span>
+                <span>▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-2">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="item-card">
+          <div class="item-card-top">
+            <span>Арт. RW-MIX-03</span>
+            <span class="badge-status">В наличии</span>
+          </div>
+          <div class="item-img-wrap">
+            <img src="https://behringer-russia.ru/wa-data/public/shop/products/13/02/213/images/920/920.500x0.png" alt="Dynacord CMS 600-3" class="item-img" />
+          </div>
+          <div class="item-info">
+            <div class="item-brand">DYNACORD</div>
+            <h3 class="item-name">CMS 600-3 Compact</h3>
+            <p class="item-specs-text">6 mono + 2 stereo, два независимых процессора эффектов, USB-интерфейс 4x4.</p>
+          </div>
+          <div class="item-card-actions">
+            <a href="https://ozon.ru" target="_blank" class="btn-buy-primary">Купить на маркетплейсе ↗</a>
+            <div style="position: relative;">
+              <button class="btn-mp-toggle" onclick="toggleMp('item-dp-3', this)">
+                <span>Выбрать площадку</span>
+                <span>▼</span>
+              </button>
+              <div class="mp-dropdown" id="item-dp-3">
+                <div class="mp-dropdown-inner">
+                  <div class="mp-list">
+                    <a href="https://ozon.ru" target="_blank" class="mp-link"><span>Ozon</span> <span>↗</span></a>
+                    <a href="https://wildberries.ru" target="_blank" class="mp-link"><span>Wildberries</span> <span>↗</span></a>
+                    <a href="https://market.yandex.ru" target="_blank" class="mp-link"><span>Яндекс Маркет</span> <span>↗</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="https://t.me/" target="_blank" class="btn-tg-secondary">
+              <span>Заказать через Telegram</span>
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-custom" id="marketplaces">
+    <div class="container footer-custom-container">
+      <div class="footer-top-block">
+        <a href="index.html" class="brand-logo-wrap">
+          <svg class="rw-icon" viewBox="0 0 320 320" fill="currentColor">
+            <path d="M141.238 164H105.358L89.7583 138.2H58.1983V164H27.2383V78.32H104.518C116.838 78.32 125.678 80.68 131.038 85.4C136.398 90.12 139.078 97.32 139.078 107C139.078 114.36 137.478 119.92 134.278 123.68C131.078 127.44 126.518 130 120.598 131.36V132.44L141.238 164ZM95.2783 117.68C98.5583 117.68 100.958 117.04 102.478 115.76C103.998 114.4 104.758 112.32 104.758 109.52C104.758 106.72 103.998 104.68 102.478 103.4C100.958 102.04 98.5583 101.36 95.2783 101.36H58.1983V117.68H95.2783Z"/>
+            <path d="M234.342 250L220.422 198.04H219.582L205.782 250H167.862L141.822 164.32H175.182L188.742 217H189.582L203.502 164.32H236.622L250.542 217H251.382L265.062 164.32H298.182L271.662 250H234.342Z"/>
+            <path d="M293.513 277.5C296.913 277.5 300.046 278.333 302.913 280C305.813 281.633 308.096 283.867 309.763 286.7C311.463 289.5 312.313 292.567 312.313 295.9C312.313 299.2 311.463 302.267 309.763 305.1C308.096 307.9 305.813 310.133 302.913 311.8C300.046 313.433 296.913 314.25 293.513 314.25C290.113 314.25 286.963 313.433 284.063 311.8C281.196 310.133 278.913 307.9 277.213 305.1C275.546 302.267 274.713 299.2 274.713 295.9C274.713 292.567 275.546 289.5 277.213 286.7C278.913 283.867 281.196 281.633 284.063 280C286.963 278.333 290.113 277.5 293.513 277.5ZM293.513 310.85C296.28 310.85 298.83 310.183 301.163 308.85C303.496 307.483 305.346 305.667 306.713 303.4C308.113 301.1 308.813 298.6 308.813 295.9C308.813 293.2 308.113 290.7 306.713 288.4C305.346 286.1 303.496 284.283 301.163 282.95C298.83 281.583 296.28 280.9 293.513 280.9C290.746 280.9 288.18 281.583 285.813 282.95C283.48 284.283 281.613 286.1 280.213 288.4C278.846 290.7 278.163 293.2 278.163 295.9C278.163 298.6 278.846 301.1 280.213 303.4C281.613 305.667 283.48 307.483 285.813 308.85C288.18 310.183 290.746 310.85 293.513 310.85ZM302.363 292.5C302.363 295.5 301.046 297.45 298.413 298.35L302.963 305.6H297.213L293.263 298.9H289.913V305.6H284.913V286.1H295.013C297.346 286.1 299.146 286.667 300.413 287.8C301.713 288.933 302.363 290.5 302.363 292.5ZM289.913 295.15H294.063C295.096 295.15 295.88 294.917 296.413 294.45C296.98 293.983 297.263 293.333 297.263 292.5C297.263 291.667 296.98 291.017 296.413 290.55C295.88 290.083 295.096 289.85 294.063 289.85H289.913V295.15Z"/>
+          </svg>
+          <span class="brand-name">ResonanceWorks <span class="brand-dot"></span></span>
+        </a>
+
+        <div class="footer-contacts-list">
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.28-.28.36-.67.25-1.02A11.36 11.36 0 0 1 8.5 4.31c0-.55-.45-1-1-1H4.13c-.55 0-1 .45-1 1C3.13 13.92 10.08 20.87 18.5 20.87c.55 0 1-.45 1-1v-3.49c0-.55-.45-1-.99-1z"/></svg>
+            </span>
+            <a href="tel:89221815958">89221815958</a>
+          </div>
+
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </span>
+            <span>г. Екатеринбург, ул. титова 8/3</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider-line"></div>
+
+      <div class="footer-bottom-block">
+        <div>ResonanceWorks 2026 © Все права защищены</div>
+        <div class="footer-socials">
+          <a href="https://t.me/" target="_blank" class="footer-social-btn" title="Telegram">
+            <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </a>
+          <a href="https://vk.com/" target="_blank" class="footer-social-btn" title="VK">
+            <svg viewBox="0 0 24 24"><path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.38 13.91h-1.61c-.61 0-.8-.49-1.9-1.59-.96-.93-1.38-1.05-1.62-1.05-.33 0-.43.1-.43.57v1.49c0 .39-.12.58-1.17.58-1.74 0-3.66-1.06-5.02-3.03-2.06-2.92-2.63-5.11-2.63-5.56 0-.25.1-.48.58-.48h1.61c.43 0 .6.2.77.67.84 2.45 2.25 4.6 2.83 4.6.22 0 .32-.1.32-.65v-2.53c-.07-1.16-.68-1.26-.68-1.67 0-.2.17-.39.43-.39h2.52c.35 0 .48.18.48.6v3.42c0 .37.16.5.27.5.22 0 .4-.13.82-.55 1.28-1.44 2.19-3.65 2.19-3.65.12-.25.32-.47.76-.47h1.61c.48 0 .59.25.48.6-.26.96-2.22 3.8-2.22 3.8-.19.31-.27.45 0 .81.19.26.83.81 1.26 1.31 1.01 1.15 1.59 2.09 1.77 2.76.19.67-.1.99-.77.99z"/></svg>
+          </a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="#" class="footer-legal-link">Политика конфиденциальности</a>
+          <a href="#" class="footer-legal-link">Согласие на обработку ПД</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMp(id, btn) {
+      const dropdown = document.getElementById(id);
+      const isOpen = dropdown.classList.contains('open');
+      document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
+      if (!isOpen) dropdown.classList.add('open');
+    }
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.item-card-actions')) {
+        document.querySelectorAll('.mp-dropdown').forEach(el => el.classList.remove('open'));
+      }
+    });
+  </script>
+</body>
+</html>
